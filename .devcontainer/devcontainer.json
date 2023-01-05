@@ -1,0 +1,9 @@
+{
+  "name": "Guilherme Carvalho",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:0.204.10-18-bullseye",
+  "features": {},
+  "forwardPorts": [],
+  "postCreateCommand": "yarn install",
+  "customizations": {},
+  "remoteUser": "node"
+}
