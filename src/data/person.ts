@@ -11,7 +11,7 @@ export const person: Person = {
         en: 'Passionate developer with experience in building web applications using modern technologies.'
     },
     social: {
-        github: 'https://github.com/guilhermecarvalho',
+        github: 'https://github.com/guilhermercarvalho',
         linkedin: 'https://linkedin.com/guilhermercarvalho'
     },
     location: {
