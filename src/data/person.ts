@@ -12,7 +12,7 @@ export const person: Person = {
     },
     social: {
         github: 'https://github.com/guilhermercarvalho',
-        linkedin: 'https://linkedin.com/guilhermercarvalho'
+        linkedin: 'https://www.linkedin.com/in/guilhermercarvalho/'
     },
     location: {
         city: 'São Paulo',
