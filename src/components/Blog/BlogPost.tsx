@@ -45,7 +45,7 @@ const BlogPost = () => {
     if (!content) return <div>Post not found.</div>;
 
     return (
-        <div className="static max-w-6xl mx-auto px-4 px-10">
+        <div className="pt-16 max-w-6xl mx-auto px-4 px-10">
             <div className="flex flex-col items-center justify-center px-4">
                 <h1 className="text-4xl font-bold my-4 text-center">{title}</h1>
                 <div

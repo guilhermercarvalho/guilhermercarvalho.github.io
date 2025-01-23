@@ -41,7 +41,7 @@ function DefaultHome() {
 
 function Layout() {
     return (
-        <div className="min-h-screen pt-16 static">
+        <div className="min-h-screen static">
             <Navigation />
             <main>
                 <Outlet />
