@@ -3,26 +3,58 @@ import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { person } from '../data/person';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function Navigation() {
+    const navigate = useNavigate();
+
+
     const [isOpen, setIsOpen] = useState(false);
     const { t } = useTranslation();
+
+    const handleAnchorClick = (hash: string) => {
+        if (location.pathname !== '/') {
+            navigate('/');
+            setTimeout(() => {
+                window.location.hash = hash;
+            }, 250);
+        } else {
+            window.location.hash = hash;
+        }
+    };
 
     return (
         <nav className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
-                    <a href="#" className="text-2xl font-bold text-blue-500">
+                    <a href="/#" onClick={(e) => {
+                        e.preventDefault();
+                        handleAnchorClick("#")
+                    }} className="text-2xl font-bold text-blue-500">
                         {person.name}
                     </a>
 
                     <div className="hidden md:flex items-center space-x-8">
-                        <a href="#about" className="text-gray-700 hover:text-blue-500">{t('navigation.about')}</a>
-                        <a href="#roles" className="text-gray-700 hover:text-blue-500">{t('navigation.roles')}</a>
-                        <a href="#projects" className="text-gray-700 hover:text-blue-500">{t('navigation.projects')}</a>
-                        <a href="#skills" className="text-gray-700 hover:text-blue-500">{t('navigation.skills')}</a>
-                        <a href="#contact" className="text-gray-700 hover:text-blue-500">{t('navigation.contact')}</a>
+                        <a href='#about' onClick={(e) => {
+                            e.preventDefault();
+                            handleAnchorClick("#about")
+                        }} className="text-gray-700 hover:text-blue-500">{t('navigation.about')}</a>
+                        <a href='#roles' onClick={(e) => {
+                            e.preventDefault();
+                            handleAnchorClick("#roles")
+                        }} className="text-gray-700 hover:text-blue-500">{t('navigation.roles')}</a>
+                        <a href='#projects' onClick={(e) => {
+                            e.preventDefault();
+                            handleAnchorClick("#projects")
+                        }} className="text-gray-700 hover:text-blue-500">{t('navigation.projects')}</a>
+                        <a href='#skills' onClick={(e) => {
+                            e.preventDefault();
+                            handleAnchorClick("#skills")
+                        }} className="text-gray-700 hover:text-blue-500">{t('navigation.skills')}</a>
+                        <a href='#contact' onClick={(e) => {
+                            e.preventDefault();
+                            handleAnchorClick("#contact")
+                        }} className="text-gray-700 hover:text-blue-500">{t('navigation.contact')}</a>
                         <Link to="/blog" className="text-gray-700 hover:text-blue-500">
                             {t('navigation.blog')}
                         </Link>
