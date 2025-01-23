@@ -1,40 +1,17 @@
-import React, { useState } from 'react';
-import { BlogCard } from '../components/Blog/BlogCard';
-import { BlogPost } from '../components/Blog/BlogPost';
-import { getBlogPosts } from '../utils/markdown';
-import type { BlogPost as BlogPostType } from '../types/blog';
+import React from 'react';
+import notes from '../data/blog/notes.json'; // Importa o arquivo JSON de notas
+import BlogCard from '../components/Blog/BlogCard'; // Componente para exibir os cards
+import { Note } from '../types/note';
 
-export function Blog() {
-  const [selectedPost, setSelectedPost] = useState<BlogPostType | null>(null);
-  const posts = getBlogPosts();
-
-  const handlePostClick = (slug: string) => {
-    const post = posts.find(p => p.slug === slug);
-    if (post) {
-      setSelectedPost(post);
-    }
-  };
-
-  return (
-    <div className="py-20 bg-gray-50" id="blog">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">Blog</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
-            <BlogCard
-              key={post.slug}
-              post={post}
-              onClick={handlePostClick}
-            />
-          ))}
+const Blog = () => (
+    <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <h1 className="text-3xl font-bold my-4">Blog</h1>
+        <div className="flex flex-wrap justify-center gap-6">
+            {(notes as Note[]).map((note) => (
+                <BlogCard key={note.id} id={note.id} title={note.title} />
+            ))}
         </div>
-      </div>
-      {selectedPost && (
-        <BlogPost
-          post={selectedPost}
-          onClose={() => setSelectedPost(null)}
-        />
-      )}
     </div>
-  );
-}
+);
+
+export default Blog

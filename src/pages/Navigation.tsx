@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { person } from '../data/person';
+import { Link } from 'react-router-dom';
 
 export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,9 @@ export function Navigation() {
                         <a href="#projects" className="text-gray-700 hover:text-blue-500">{t('navigation.projects')}</a>
                         <a href="#skills" className="text-gray-700 hover:text-blue-500">{t('navigation.skills')}</a>
                         <a href="#contact" className="text-gray-700 hover:text-blue-500">{t('navigation.contact')}</a>
-                        <a href="#blog" className="text-gray-700 hover:text-blue-500">{t('navigation.blog')}</a>
+                        <Link to="/blog" className="text-gray-700 hover:text-blue-500">
+                            {t('navigation.blog')}
+                        </Link>
                     </div>
 
                     <div className="hidden md:flex items-center">

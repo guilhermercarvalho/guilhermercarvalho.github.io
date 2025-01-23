@@ -1,7 +1,6 @@
+import { marked } from 'marked';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 
 export function About() {
     const { t } = useTranslation();
@@ -12,11 +11,9 @@ export function About() {
                 <a href='#about'>
                     <h2 className="text-4xl font-bold text-center mb-8">{t('about.title')}</h2>
                 </a>
-                <div className="prose max-w-none text-gray-700">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                        {t('about.description')}
-                    </ReactMarkdown>
-                </div>
+                <div className="prose max-w-none text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: marked(t('about.description'), { async: false }) }}
+                />
             </div>
         </div>
     );
