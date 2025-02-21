@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { person } from '../data/person';
 
 export function Navigation() {
@@ -25,9 +24,9 @@ export function Navigation() {
                         <a href="#blog" className="text-gray-700 hover:text-blue-500">{t('navigation.blog')}</a>
                     </div>
 
-                    <div className="hidden md:flex items-center">
+                    {/* <div className="hidden md:flex items-center">
                         <LanguageSwitcher />
-                    </div>
+                    </div> */}
                     <button
                         className="md:hidden"
                         onClick={() => setIsOpen(!isOpen)}
@@ -75,9 +74,9 @@ export function Navigation() {
                         >
                             {t('navigation.blog')}
                         </a>
-                        <div className="px-3 py-2">
+                        {/* <div className="px-3 py-2">
                             <LanguageSwitcher />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             )}
