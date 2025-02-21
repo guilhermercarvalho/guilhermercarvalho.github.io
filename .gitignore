@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Credencials
+gitlab-api-auth.json
+
+# Environments
+.env
