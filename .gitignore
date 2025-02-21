@@ -27,4 +27,5 @@ dist-ssr
 gitlab-api-auth.json
 
 # Environments
-.env
+.env*
+!.env.example
