@@ -21,5 +21,9 @@ export interface Person {
             'pt-BR': string;
             en: string;
         }
+    },
+    sites: {
+        portfolio: string,
+        blog: string
     }
 }

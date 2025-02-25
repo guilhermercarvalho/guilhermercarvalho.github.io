@@ -23,5 +23,9 @@ export const person: Person = {
     },
     contact: {
         email: 'dev.gcarvalho@gmail.com'
+    },
+    sites: {
+        portfolio: 'https://guilhermercarvalho.github.io',
+        blog: 'https://guilhermercarvalho.github.io/blog'
     }
 };

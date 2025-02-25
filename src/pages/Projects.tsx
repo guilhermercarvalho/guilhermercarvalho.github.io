@@ -1,33 +1,50 @@
-import React from 'react';
-import { ExternalLink, Github, Text } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { BookOpen, ExternalLink, Github } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { GitHubProject } from '../types/github';
+import { fetchProjects, getDemoUrl } from '../data/github-api';
+import { getProjectSharedName } from '../data/projects-shared';
 
-const projects = [
-    {
-        title: 'E-Commerce Platform',
-        description: 'A full-featured online shopping platform built with React and Node.js',
-        image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800',
-        github: 'https://github.com',
-        demo: 'https://demo.com'
-    },
-    {
-        title: 'Task Management App',
-        description: 'A productivity app for managing daily tasks and projects',
-        image: 'https://images.unsplash.com/photo-1540350394557-8d14678e7f91?auto=format&fit=crop&q=80&w=800',
-        github: 'https://github.com',
-        demo: 'https://demo.com'
-    },
-    {
-        title: 'Weather Dashboard',
-        description: 'Real-time weather information with interactive maps',
-        image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=800',
-        github: 'https://github.com',
-        demo: 'https://demo.com'
-    }
-];
 
 export function Projects() {
     const { t } = useTranslation();
+    const [projects, setProjects] = useState<GitHubProject[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchProjectsEffect = async () => {
+            try {
+                const validRepos = await fetchProjects()
+                setProjects(validRepos as GitHubProject[]);
+                setError(null);
+            } catch (error) {
+                console.error('Failed to load projects:', error);
+                setError(t('projects.loadError'));
+                setProjects([]);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchProjectsEffect();
+    }, [t])
+
+    if (loading) {
+        return (
+            <div className="py-20 bg-gray-50 text-center">
+                <div className="animate-spin inline-block w-12 h-12 border-4 border-blue-500 rounded-full border-t-transparent"></div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="py-20 bg-gray-50 text-center text-red-600">
+                {error}
+            </div>
+        );
+    }
 
     return (
         <div className="py-20 bg-gray-50" id="projects">
@@ -39,35 +56,44 @@ export function Projects() {
                     {projects.map((project, index) => (
                         <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg">
                             <img
-                                src={project.image}
-                                alt={project.title}
+                                src={getProjectSharedName(project.name).imageUrl}
+                                alt={project.name}
                                 className="w-full h-48 object-cover"
                             />
                             <div className="p-6">
-                                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                                <h3
+                                    className="text-xl font-semibold mb-2"
+                                    title={getProjectSharedName(project.name).title}
+                                >
+                                    {getProjectSharedName(project.name).title}
+                                </h3>
                                 <p className="text-gray-600 mb-4">{project.description}</p>
                                 <div className="flex space-x-4">
                                     <a
-                                        href={project.github}
-                                        className="flex items-center text-gray-700 hover:text-blue-500"
-                                    >
-                                        <Text size={20} className="mr-2" />
-                                        {t('projects.viewBlogPost')}
-                                    </a>
-                                    <a
-                                        href={project.github}
+                                        href={project.html_url}
                                         className="flex items-center text-gray-700 hover:text-blue-500"
                                     >
                                         <Github size={20} className="mr-2" />
                                         {t('projects.viewCode')}
                                     </a>
-                                    <a
-                                        href={project.demo}
-                                        className="flex items-center text-gray-700 hover:text-blue-500"
-                                    >
-                                        <ExternalLink size={20} className="mr-2" />
-                                        {t('projects.viewDemo')}
-                                    </a>
+                                    {getDemoUrl(project) && (
+                                        <a
+                                            href={getDemoUrl(project)}
+                                            className="flex items-center text-gray-700 hover:text-blue-500"
+                                        >
+                                            <ExternalLink size={20} className="mr-2" />
+                                            {t('projects.viewDemo')}
+                                        </a>
+                                    )}
+                                    {getProjectSharedName(project.name).blogPost && (
+                                        <a
+                                            href={getProjectSharedName(project.name).blogPost || ''}
+                                            className="flex items-center text-gray-700 hover:text-blue-500"
+                                        >
+                                            <BookOpen size={20} className="mr-2" />
+                                            {t('projects.viewBlogPost')}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>
