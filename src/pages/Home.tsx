@@ -69,9 +69,6 @@ export function Home() {
                     <a href='#projects' className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold transition-colors">
                         {t('home.cta')}
                     </a>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold transition-colors">
-                        {t('home.resume')}
-                    </button>
                 </div>
             </div>
         </div>

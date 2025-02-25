@@ -18,7 +18,6 @@ export default {
             role: person.role.en,
             cta: 'View my work',
             contact: 'Get in touch',
-            resume: 'View my resume',
         },
         about: {
             title: 'About Me',

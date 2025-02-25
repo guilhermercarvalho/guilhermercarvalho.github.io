@@ -18,7 +18,6 @@ export default {
             role: person.role['pt-BR'],
             cta: 'Veja meus trabalhos',
             contact: 'Entre em contato',
-            resume: 'Veja meu currículo',
         },
         about: {
             title: 'Sobre Mim',
