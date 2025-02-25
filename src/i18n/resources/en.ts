@@ -121,7 +121,10 @@ Se você busca um profissional confiável e multidisciplinar para criar soluçõ
                 name: 'Name',
                 email: 'Email',
                 message: 'Message',
+                sending: 'Sending...',
                 send: 'Send Message',
+                sended: 'Send Success',
+                error: 'Error Sending Menssage',
             },
         },
         footer: {
