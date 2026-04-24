@@ -29,3 +29,10 @@ gitlab-api-auth.json
 # Environments
 .env*
 !.env.example
+
+# Temporaty files
+temp/
+tmp/
+
+# To-do lists
+TODOs.md
