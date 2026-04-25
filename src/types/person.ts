@@ -17,6 +17,8 @@ export interface Person {
     };
     location: {
         city: string;
+        state: string;
+        countryCode: string;
         country: {
             'pt-BR': string;
             en: string;
@@ -25,5 +27,6 @@ export interface Person {
     sites: {
         portfolio: string,
         blog: string
-    }
+    },
+    whatsapp: string;
 }
