@@ -71,6 +71,9 @@ export function Projects() {
                 <img
                   src={info.imageUrl}
                   alt={info.title}
+                  width={600}
+                  height={400}
+                  loading="lazy"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -113,7 +116,6 @@ export function Projects() {
   );
 }
 
-// Helper to map project name to translation key (fallback)
 function getProjectKey(name: string): string {
   const map: Record<string, string> = {
     'ufms-lbd-web-sgbd': 'proj1',

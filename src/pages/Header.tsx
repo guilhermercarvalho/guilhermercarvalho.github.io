@@ -65,6 +65,7 @@ export function Header() {
             {/* Language toggle */}
             <button
               onClick={toggleLanguage}
+              aria-label="Switch language"
               className="text-sm font-semibold px-3 py-1 rounded-full border border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
             >
               {i18n.language === 'en' ? 'PT' : 'EN'}
@@ -119,6 +120,7 @@ export function Header() {
               </button>
               <button
                 onClick={toggleLanguage}
+                aria-label="Switch language"
                 className="text-sm font-semibold px-3 py-1 rounded-full border border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
                 {i18n.language === 'en' ? 'PT' : 'EN'}

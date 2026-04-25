@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Header } from './pages/Header';
 import { Hero } from './pages/Hero';
 import { About } from './pages/About';
@@ -6,8 +8,14 @@ import { Contact } from './pages/Contact';
 import { Footer } from './pages/Footer';
 
 function App() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors">
+    <div>
       <Header />
       <main>
         <Hero />
