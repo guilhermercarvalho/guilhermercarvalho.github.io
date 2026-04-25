@@ -1,6 +1,5 @@
 import { GitHubProject, GitHubProjectWithLanguages, GitHubRepo } from "../types/github";
 import { projectShared } from "./projects-shared";
-import { person } from "./person"
 
 const GITHUB_API = {
     base_url: 'https://api.github.com',
@@ -98,10 +97,3 @@ function decodeReadme(content: any) {
     const decoder = new TextDecoder('utf-8');
     return decoder.decode(bytes);
 }
-
-export const getDemoUrl = (project: GitHubProject) => {
-    const url = project.has_pages
-        ? `${person.sites.portfolio}/${project.name}`
-        : project.homepage;
-    return url ?? ""
-};

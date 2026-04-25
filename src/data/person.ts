@@ -30,5 +30,5 @@ export const person: Person = {
     portfolio: 'https://guilhermercarvalho.github.io',
     blog: 'https://guilhermercarvalho.github.io/blog'
   },
-  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER || '5511999999999'
+  whatsapp: (import.meta.env.VITE_WHATSAPP_NUMBER || '5511999999999').replace(/\D/g, '')
 };

@@ -18,11 +18,6 @@ export const projectShared: Record<string, RepoInfo> = {
     blogPost: null,
     imageUrl: 'https://images.unsplash.com/photo-1604335398980-ededcadcc37d',
   },
-  'blog': {
-    title: 'Blog Técnico',
-    blogPost: null,
-    imageUrl: 'https://images.unsplash.com/photo-1660511715501-89bd2afd6e8e',
-  },
   'producer-consumer-hid': {
     title: 'Produtor-Consumidor',
     blogPost: null,
@@ -37,11 +32,6 @@ export const projectShared: Record<string, RepoInfo> = {
     title: 'RESTful API de Estudantes',
     blogPost: null,
     imageUrl: 'https://images.unsplash.com/photo-1561089489-f13d5e730d72',
-  },
-  'guilhermercarvalho.github.io': {
-    title: 'Portfolio',
-    blogPost: null,
-    imageUrl: 'https://images.unsplash.com/photo-1527239441953-caffd968d952',
   },
 };
 
