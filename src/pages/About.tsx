@@ -1,23 +1,18 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 
 export function About() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <div className="py-20 bg-gray-50" id="about">
-            <div className="max-w-4xl mx-auto px-4">
-                <a href='#about'>
-                    <h2 className="text-4xl font-bold text-center mb-8">{t('about.title')}</h2>
-                </a>
-                <div className="prose max-w-none text-gray-700">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                        {t('about.description')}
-                    </ReactMarkdown>
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <section id="about" className="py-20 bg-white dark:bg-neutral-900">
+      <div className="max-w-3xl mx-auto px-4 text-center">
+        <h2 className="text-3xl font-bold text-neutral-900 dark:text-white">
+          {t('about.title')}
+        </h2>
+        <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          {t('about.text')}
+        </p>
+      </div>
+    </section>
+  );
 }
