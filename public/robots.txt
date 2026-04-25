@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://guilhermercarvalho.github.io/sitemap.xml
