@@ -61,6 +61,8 @@ export default {
     },
     footer: {
       rights: 'Todos os direitos reservados.',
+      privacy: 'Política de Privacidade',
+      privacyUrl: '/privacy.html',
     },
   },
 };
