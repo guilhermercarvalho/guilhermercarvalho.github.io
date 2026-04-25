@@ -6,6 +6,7 @@ import { About } from './pages/About';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 import { Footer } from './pages/Footer';
+import { initGA, trackPageView } from './lib/analytics';
 
 function App() {
   const { i18n } = useTranslation();
@@ -13,6 +14,21 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
+
+  useEffect(() => {
+    initGA();
+
+    const handleRoute = () => {
+      const page = window.location.pathname + window.location.hash;
+      trackPageView(page);
+    };
+
+    // Rastreia a rota inicial
+    handleRoute();
+
+    window.addEventListener('hashchange', handleRoute);
+    return () => window.removeEventListener('hashchange', handleRoute);
+  }, []);
 
   return (
     <div>
